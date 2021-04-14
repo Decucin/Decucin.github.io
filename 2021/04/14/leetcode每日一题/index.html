@@ -30,7 +30,7 @@
 <meta property="og:description" content="leetcode每日一题此处记录我leetcode的每日一题题解，由于是初学，因此很多地方可能会解释不清，所给题解也不一定是最优解！">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-14T09:47:55.217Z">
-<meta property="article:modified_time" content="2021-04-14T09:47:55.283Z">
+<meta property="article:modified_time" content="2021-04-14T10:17:24.973Z">
 <meta property="article:author" content="Decucin">
 <meta name="twitter:card" content="summary">
 
@@ -195,8 +195,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-04-14 17:47:55" itemprop="dateCreated datePublished" datetime="2021-04-14T17:47:55+08:00">2021-04-14</time>
+              <time title="创建时间：2021-04-14 17:47:55 / 修改时间：18:17:24" itemprop="dateCreated datePublished" datetime="2021-04-14T17:47:55+08:00">2021-04-14</time>
             </span>
 
           
@@ -212,14 +213,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
+              <span>2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -235,7 +236,7 @@
 <a id="more"></a>
 
 <h2 id="2021-4-13"><a href="#2021-4-13" class="headerlink" title="2021/4/13"></a>2021/4/13</h2><h3 id="题目：二叉搜索树节点最小距离"><a href="#题目：二叉搜索树节点最小距离" class="headerlink" title="题目：二叉搜索树节点最小距离"></a>题目：<a href="https://leetcode-cn.com/problems/minimum-distance-between-bst-nodes/" target="_blank" rel="noopener">二叉搜索树节点最小距离</a></h3><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>给你一个二叉搜索树的根节点 <code>root</code> ，返回 <strong>树中任意两不同节点值之间的最小差值</strong> 。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先应该明白的一点，什么是二叉搜索树，其具有什么特性，这些特性中哪些是能帮助我们解题的。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>首先应该明白的一点，什么是二叉搜索树，其具有什么特性，这些特性中哪些是能帮助解题的。</p>
 <p>接下来只要回答上面的问题即可。</p>
 <p>首先什么是二叉搜索树：</p>
 <p><a href="https://baike.baidu.com/item/二叉查找树/7077965" target="_blank" rel="noopener">二叉查找树</a>（Binary Search Tree），（又：二叉搜索树，二叉排序树）它或者是一棵空树，或者是具有下列性质的<a href="https://baike.baidu.com/item/二叉树/1602879" target="_blank" rel="noopener">二叉树</a>： 若它的左子树不空，则左子树上所有结点的值均小于它的<a href="https://baike.baidu.com/item/根结点/9795570" target="_blank" rel="noopener">根结点</a>的值； 若它的右子树不空，则右子树上所有结点的值均大于它的根结点的值； 它的左、右子树也分别为<a href="https://baike.baidu.com/item/二叉排序树/10905079" target="_blank" rel="noopener">二叉排序树</a>。二叉搜索树作为一种经典的数据结构，它既有链表的快速插入与删除操作的特点，又有数组快速查找的优势；所以应用十分广泛，例如在文件系统和数据库系统一般会采用这种数据结构进行高效率的排序与检索操作。</p>
@@ -249,8 +250,18 @@
 <p>完整题解如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pre;</span><br><span class="line">    <span class="keyword">int</span> ans;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDiffInBST</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        pre = -<span class="number">1</span>;</span><br><span class="line">        ans = Integer.MAX_VALUE;</span><br><span class="line">        dfs(root);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        dfs(root.left);</span><br><span class="line">        <span class="keyword">if</span>(pre == -<span class="number">1</span>)&#123;</span><br><span class="line">            pre = root.val;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            ans = Math.min(ans, root.val - pre);</span><br><span class="line">            pre = root.val;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
+<h2 id="2021-4-14"><a href="#2021-4-14" class="headerlink" title="2021/4/14"></a>2021/4/14</h2><h3 id="题目：实现-Trie-前缀树"><a href="#题目：实现-Trie-前缀树" class="headerlink" title="题目：实现 Trie (前缀树)"></a>题目：<a href="https://leetcode-cn.com/problems/implement-trie-prefix-tree/" target="_blank" rel="noopener">实现 Trie (前缀树)</a></h3><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>Trie（发音类似 “try”）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。</p>
+<p>请你实现 Trie 类：</p>
+<p>Trie() 初始化前缀树对象。<br>void insert(String word) 向前缀树中插入字符串 word 。<br>boolean search(String word) 如果字符串 word 在前缀树中，返回 true（即，在检索之前已经插入）；否则，返回 false 。<br>boolean startsWith(String prefix) 如果之前已经插入的字符串 word 的前缀之一为 prefix ，返回 true ；否则，返回 false 。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>什么是前缀树？</p>
+<p><a href="https://baike.baidu.com/item/%E5%AD%97%E5%85%B8%E6%A0%91/9825209?fromtitle=%E5%89%8D%E7%BC%80%E6%A0%91&fromid=2501595&fr=aladdin" target="_blank" rel="noopener">字典树</a>，又称单词查找树，<a href="https://baike.baidu.com/item/Trie树" target="_blank" rel="noopener">Trie树</a>，是一种<a href="https://baike.baidu.com/item/树形结构/9663807" target="_blank" rel="noopener">树形结构</a>，是一种哈希树的变种。典型应用是用于统计，排序和保存大量的<a href="https://baike.baidu.com/item/字符" target="_blank" rel="noopener">字符</a>串（但不仅限于字符串），所以经常被搜索引擎系统用于文本词频统计。它的优点是：利用字符串的公共前缀来减少查询时间，最大限度地减少无谓的字符串比较，查询效率比哈希树高。</p>
+<p>前缀树的性质：</p>
+<p>根节点不包含字符，除根节点外每一个节点都只包含一个字符； 从根节点到某一节点，路径上经过的字符连接起来，为该节点对应的字符串； 每个节点的所有子节点包含的字符都不相同。</p>
+<p>综上，前缀树的每个节点用于表示单词的一个字母，从根节点开始，每个节点至多有26个节点（26个小写字母），所以得到前缀树应该具有的元素，一个标志其是否为词尾元素的标记符，用于保存子节点的节点数组。</p>
+<p>至于初始化操作，只需要分别初始化标志符（置为false）和节点数组（置为null）。</p>
+<p>插入操作只需将需要插入的字符一个一个放入前缀树中，每放入一个字符，二叉树的节点就向下移动到插入的位置即可，在插入完成后记得将此节点的标志符置为true，表示某个词的结束。</p>
+<p>检索单词是否在前缀树中：按照单词中每个字母出现的顺序探索前缀树，若能一直向下探索并且最后的节点是某个词的结束（标识符为true），那么单词便在前缀树中，反之则不在。</p>
+<p>检索前缀是否为插入的字符串的前缀：与检索单词类似，也是一直向下探索，但最后无需分辨是否是某个词的结束，即能够向下遍历便说明前缀存在，反之不存在。</p>
 
     </div>
 
@@ -347,7 +358,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode每日一题"><span class="nav-number">1.</span> <span class="nav-text">leetcode每日一题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2021-4-13"><span class="nav-number">1.1.</span> <span class="nav-text">2021&#x2F;4&#x2F;13</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目：二叉搜索树节点最小距离"><span class="nav-number">1.1.1.</span> <span class="nav-text">题目：二叉搜索树节点最小距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.1.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">1.1.3.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#leetcode每日一题"><span class="nav-number">1.</span> <span class="nav-text">leetcode每日一题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2021-4-13"><span class="nav-number">1.1.</span> <span class="nav-text">2021&#x2F;4&#x2F;13</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目：二叉搜索树节点最小距离"><span class="nav-number">1.1.1.</span> <span class="nav-text">题目：二叉搜索树节点最小距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.1.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">1.1.3.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021-4-14"><span class="nav-number">1.2.</span> <span class="nav-text">2021&#x2F;4&#x2F;14</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目：实现-Trie-前缀树"><span class="nav-number">1.2.1.</span> <span class="nav-text">题目：实现 Trie (前缀树)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -412,13 +423,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">58k</span>
+    <span title="站点总字数">59k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">53 分钟</span>
+    <span title="站点阅读时长">54 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
