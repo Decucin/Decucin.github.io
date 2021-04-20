@@ -171,23 +171,6 @@
   </entry>
   
   <entry>
-    <title>创建git仓库</title>
-    <link href="http://yoursite.com/2020/11/27/%E5%88%9B%E5%BB%BAgit%E4%BB%93%E5%BA%93/"/>
-    <id>http://yoursite.com/2020/11/27/%E5%88%9B%E5%BB%BAgit%E4%BB%93%E5%BA%93/</id>
-    <published>2020-11-27T04:30:15.821Z</published>
-    <updated>2020-05-07T16:16:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>既然是利用GitHub进行托管，那么必须将其放到相应的库中。</p><a id="more"></a><h1 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a>创建git仓库</h1><p>打开<a href="https://www.github.com/" target="_blank" rel="noopener">github官网</a>，登录自己申请的账号后，点开右上角的加号，选择New repository，在Repository name下输入仓库名，必须是username.github.io（此处的username必须是你github的用户名），选择Public，勾选Initialize this repository with a README，点击Create repository，仓库至此创建完成。</p><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200507235203205.png" alt="image-20200507235203205"></p><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200507235311764.png" alt="image-20200507235311764"></p><p>由于此处我已经建立过，所以会显示邮箱已存在。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;既然是利用GitHub进行托管，那么必须将其放到相应的库中。&lt;/p&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>将该框架上传到github</title>
     <link href="http://yoursite.com/2020/11/27/%E5%B0%86%E8%AF%A5%E6%A1%86%E6%9E%B6%E4%B8%8A%E4%BC%A0%E5%88%B0github/"/>
     <id>http://yoursite.com/2020/11/27/%E5%B0%86%E8%AF%A5%E6%A1%86%E6%9E%B6%E4%B8%8A%E4%BC%A0%E5%88%B0github/</id>
@@ -198,6 +181,23 @@
     
     
     <summary type="html">&lt;p&gt;在前面我们搭建好了框架，但只有将其上传到GitHub中才能通过浏览器访问，而不是像之前一样只能本地访问。&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>创建git仓库</title>
+    <link href="http://yoursite.com/2020/11/27/%E5%88%9B%E5%BB%BAgit%E4%BB%93%E5%BA%93/"/>
+    <id>http://yoursite.com/2020/11/27/%E5%88%9B%E5%BB%BAgit%E4%BB%93%E5%BA%93/</id>
+    <published>2020-11-27T04:30:15.821Z</published>
+    <updated>2020-05-07T16:16:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>既然是利用GitHub进行托管，那么必须将其放到相应的库中。</p><a id="more"></a><h1 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a>创建git仓库</h1><p>打开<a href="https://www.github.com/" target="_blank" rel="noopener">github官网</a>，登录自己申请的账号后，点开右上角的加号，选择New repository，在Repository name下输入仓库名，必须是username.github.io（此处的username必须是你github的用户名），选择Public，勾选Initialize this repository with a README，点击Create repository，仓库至此创建完成。</p><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200507235203205.png" alt="image-20200507235203205"></p><p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200507235311764.png" alt="image-20200507235311764"></p><p>由于此处我已经建立过，所以会显示邮箱已存在。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;既然是利用GitHub进行托管，那么必须将其放到相应的库中。&lt;/p&gt;</summary>
     
     
     
