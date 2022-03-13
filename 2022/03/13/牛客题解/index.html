@@ -22,30 +22,53 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="喜欢简单的事物和明朗的关系">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog of Decucin">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="链表部分BM1 反转链表题目描述给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后，返回新链表的表头。  数据范围： 0≤n≤1000 要求：空间复杂度 O(1) ，时间复杂度 O(n)。  如当输入链表{1,2,3}时，  经反转后，原链表变为{3,2,1}，所以对应的输出为{3,2,1}。  以上转换过程如下图所示：  题解反转链表的基本思">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客题解">
+<meta property="og:url" content="http://yoursite.com/2022/03/13/%E7%89%9B%E5%AE%A2%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Blog of Decucin">
-<meta property="og:description" content="喜欢简单的事物和明朗的关系">
+<meta property="og:description" content="链表部分BM1 反转链表题目描述给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后，返回新链表的表头。  数据范围： 0≤n≤1000 要求：空间复杂度 O(1) ，时间复杂度 O(n)。  如当输入链表{1,2,3}时，  经反转后，原链表变为{3,2,1}，所以对应的输出为{3,2,1}。  以上转换过程如下图所示：  题解反转链表的基本思">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20211014/423483716_1634206291971/4A47A0DB6E60853DEDFCFDF08A5CA249">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20220110/423483716_1641800950920/0710DD5D9C4D4B11A8FA0C06189F9E9C">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20211025/423483716_1635154005498/DA92C945EF643F1143567935F20D6B46">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20211105/423483716_1636084313645/5407F55227804F31F5C5D73558596F2C">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20211104/423483716_1635999204882/394BB7AFD5CEA3DC64D610F62E6647A6">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20211105/423483716_1636084743981/C2DB572B01B0FDC03C097BE7ABA45114">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20211014/423483716_1634212356346/9EB9CD58B9EA5E04C890326B5C1F471F">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210114/999991351_1610616074120/036DC34FF19FB24652AFFEB00A119A76">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210717/557336_1626492068888/41FDD435F0BA63A57E274747DE377E05">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20200807/999991351_1596786493913_8BFB3E9513755565DC67D86744BB6159">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210605/557336_1622886924427/E1F1270919D292C9F48F51975FD07CE2">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210926/382300087_1632642756706/A22A794C036C06431E632F9D5E2E298F">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210926/382300087_1632642770481/3304ABDD147D8E140B2CEF3201BD8372">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210928/382300087_1632821337680/9E290CFD3730B9B08A5CEFF25799608F">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210928/382300087_1632821376266/DD0A63560E770A8510049C5182E6E622">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210928/382300087_1632821404541/9CB750F8909D5985C0D01D8B71AD58BA">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210922/382300087_1632302001586/420B82546CFC9760B45DD65BA9244888">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20210922/382300087_1632302036250/AD8C4CC119B15070FA1DBAA1EBE8FC2A">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20211109/392807_1636440937987/9C31F319601A5B78D34F62FF77A02A11">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20211109/392807_1636440984427/5E5B576E11CB2C96724680C94755ABCB">
+<meta property="article:published_time" content="2022-03-13T04:50:37.359Z">
+<meta property="article:modified_time" content="2022-03-13T04:49:23.127Z">
 <meta property="article:author" content="Decucin">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://uploadfiles.nowcoder.com/images/20211014/423483716_1634206291971/4A47A0DB6E60853DEDFCFDF08A5CA249">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2022/03/13/%E7%89%9B%E5%AE%A2%E9%A2%98%E8%A7%A3/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Blog of Decucin</title>
+  <title>牛客题解 | Blog of Decucin</title>
   
 
 
@@ -164,9 +187,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -182,10 +206,9 @@
       <meta itemprop="name" content="Blog of Decucin">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/13/%E7%89%9B%E5%AE%A2%E9%A2%98%E8%A7%A3/" class="post-title-link" itemprop="url">牛客题解</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          牛客题解
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -198,7 +221,14 @@
               <time title="创建时间：2022-03-13 12:50:37 / 修改时间：12:49:23" itemprop="dateCreated datePublished" datetime="2022-03-13T12:50:37+08:00">2022-03-13</time>
             </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -223,7 +253,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="链表部分"><a href="#链表部分" class="headerlink" title="链表部分"></a>链表部分</h1><h2 id="BM1-反转链表"><a href="#BM1-反转链表" class="headerlink" title="BM1 反转链表"></a>BM1 <a href="https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=295&tqId=23286&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj" target="_blank" rel="noopener">反转链表</a></h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后，返回新链表的表头。 </p>
+        <h1 id="链表部分"><a href="#链表部分" class="headerlink" title="链表部分"></a>链表部分</h1><h2 id="BM1-反转链表"><a href="#BM1-反转链表" class="headerlink" title="BM1 反转链表"></a>BM1 <a href="https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=295&tqId=23286&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj" target="_blank" rel="noopener">反转链表</a></h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个单链表的头结点pHead(该头节点是有值的，比如在下图，它的val是1)，长度为n，反转该链表后，返回新链表的表头。 </p>
 <p>数据范围： 0≤<em>n</em>≤1000</p>
 <p>要求：空间复杂度 O(1) ，时间复杂度 O(n)。 </p>
 <p>如当输入链表{1,2,3}时， </p>
@@ -557,7 +587,6 @@
 <h3 id="题解-36"><a href="#题解-36" class="headerlink" title="题解"></a>题解</h3><p>或者就是在中序遍历的过程中直接比较，不使用额外数组</p>
 <h3 id="Java代码实现-35"><a href="#Java代码实现-35" class="headerlink" title="Java代码实现"></a>Java代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> root TreeNode类 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> bool布尔型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">int</span> pre = Integer.MIN_VALUE;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidBST</span> <span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write code here</span></span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> dfs(root);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">dfs</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(root != <span class="keyword">null</span>)&#123;</span><br><span class="line">            flag = (flag &amp;&amp; dfs(root.left));</span><br><span class="line">            flag = (flag &amp;&amp; (root.val &gt; pre));</span><br><span class="line">            pre = root.val;</span><br><span class="line">            flag = (flag &amp;&amp; dfs(root.right));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
     </div>
 
     
@@ -565,970 +594,44 @@
     
 
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/01/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/2022%E5%B9%B41%E6%9C%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Decucin">
-      <meta itemprop="description" content="喜欢简单的事物和明朗的关系">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog of Decucin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/01/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/2022%E5%B9%B41%E6%9C%88/" class="post-title-link" itemprop="url">leetcode每日一题/2022年1月</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-01-01 22:17:57" itemprop="dateCreated datePublished" datetime="2022-01-01T22:17:57+08:00">2022-01-01</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="2022年1月"><a href="#2022年1月" class="headerlink" title="2022年1月"></a>2022年1月</h1><h2 id="1-1-将一维数组转变成二维数组"><a href="#1-1-将一维数组转变成二维数组" class="headerlink" title="1/1 将一维数组转变成二维数组"></a>1/1 <a href="https://leetcode-cn.com/problems/convert-1d-array-into-2d-array/" target="_blank" rel="noopener">将一维数组转变成二维数组</a></h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给你一个下标从 0 开始的一维整数数组 original 和两个整数 m 和  n 。你需要使用 original 中 所有 元素创建一个 m 行 n 列的二维数组。</p>
-<p>original 中下标从 0 到 n - 1 （都 包含 ）的元素构成二维数组的第一行，下标从 n 到 2 * n - 1 （都 包含 ）的元素构成二维数组的第二行，依此类推。</p>
-<p>请你根据上述过程返回一个 m x n 的二维数组。如果无法构成这样的二维数组，请你返回一个空的二维数组。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>示例 1：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：original &#x3D; [1,2,3,4], m &#x3D; 2, n &#x3D; 2</span><br><span class="line">输出：[[1,2],[3,4]]</span><br><span class="line">解释：</span><br><span class="line">构造出的二维数组应该包含 2 行 2 列。</span><br><span class="line">original 中第一个 n&#x3D;2 的部分为 [1,2] ，构成二维数组的第一行。</span><br><span class="line">original 中第二个 n&#x3D;2 的部分为 [3,4] ，构成二维数组的第二行。</span><br></pre></td></tr></table></figure>
-
-
-<p>示例 2：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：original &#x3D; [1,2,3], m &#x3D; 1, n &#x3D; 3</span><br><span class="line">输出：[[1,2,3]]</span><br><span class="line">解释：</span><br><span class="line">构造出的二维数组应该包含 1 行 3 列。</span><br><span class="line">将 original 中所有三个元素放入第一行中，构成要求的二维数组。</span><br></pre></td></tr></table></figure>
-
-
-<p>示例 3：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：original &#x3D; [1,2], m &#x3D; 1, n &#x3D; 1</span><br><span class="line">输出：[]</span><br><span class="line">解释：</span><br><span class="line">original 中有 2 个元素。</span><br><span class="line">无法将 2 个元素放入到一个 1x1 的二维数组中，所以返回一个空的二维数组。</span><br></pre></td></tr></table></figure>
-
-
-<p>示例 4：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：original &#x3D; [3], m &#x3D; 1, n &#x3D; 2</span><br><span class="line">输出：[]</span><br><span class="line">解释：</span><br><span class="line">original 中只有 1 个元素。</span><br><span class="line">无法将 1 个元素放满一个 1x2 的二维数组，所以返回一个空的二维数组。</span><br></pre></td></tr></table></figure>
-
-<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><ul>
-<li><p><code>1 &lt;= original.length &lt;= 5 * 104</code></p>
-</li>
-<li><p><code>1 &lt;= original[i] &lt;= 105</code></p>
-</li>
-<li><p><code>1 &lt;= m, n &lt;= 4 * 104</code></p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>2022年，从快乐的简单题开始，这题很简单，就是将一个一位数组按照给定的行列数转换为二维数组，首先需要考虑的就是此一位数组能否被重构为一个二维数组，直接判断一维数组中的元素个数与要求构造的数组的元素个数是否相等即可，之后便是遍历一维数组，每个列数个元素就另起一行即可，总的时间复杂度是O(m * n)，详细题解如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] construct2DArray(<span class="keyword">int</span>[] original, <span class="keyword">int</span> m, <span class="keyword">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">if</span>(original.length != m * n)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>][];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[][] res = <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line">        <span class="keyword">int</span> curIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)&#123;</span><br><span class="line">                res[i][j] = original[curIndex++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h4><p>开始写的时候忘记了如何构造一个空数组，看题解发现只需根据数组的维数，利用new int[0]即可，只要第一个维度的大小为0即可，之后的维度大小不用填。</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/21/ccfcsp/22%E6%AC%A1CCF-CSP%E8%AE%A4%E8%AF%81%E8%80%83%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Decucin">
-      <meta itemprop="description" content="喜欢简单的事物和明朗的关系">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog of Decucin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/21/ccfcsp/22%E6%AC%A1CCF-CSP%E8%AE%A4%E8%AF%81%E8%80%83%E8%AF%95/" class="post-title-link" itemprop="url">ccfcsp/22次CCF-CSP认证考试</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-09-21 11:08:44 / 修改时间：15:24:08" itemprop="dateCreated datePublished" datetime="2021-09-21T11:08:44+08:00">2021-09-21</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="22次CCF-CSP认证考试"><a href="#22次CCF-CSP认证考试" class="headerlink" title="22次CCF-CSP认证考试"></a>22次CCF-CSP认证考试</h1><h2 id="灰度直方图"><a href="#灰度直方图" class="headerlink" title="灰度直方图"></a>灰度直方图</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>一幅长宽分别为 n 个像素和 m 个像素的灰度图像可以表示为一个 n×m 大小的矩阵 A。<br>其中每个元素 Aij（0≤i&lt;n、0≤j&lt;m）是一个 [0,L) 范围内的整数，表示对应位置像素的灰度值。<br>具体来说，一个 8 比特的灰度图像中每个像素的灰度范围是 [0,128)。</p>
-<p>一副灰度图像的灰度统计直方图（以下简称“直方图”）可以表示为一个长度为 L 的数组 h，其中 h[x]（0≤x&lt;L）表示该图像中灰度值为 x 的像素个数。显然，h[0] 到 h[L−1] 的总和应等于图像中的像素总数 n⋅m。</p>
-<p>已知一副图像的灰度矩阵 A，试计算其灰度直方图 h[0],h[1],⋯,h[L−1]。</p>
-<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入共 n+1 行。</p>
-<p>输入的第一行包含三个用空格分隔的正整数 n、m 和 L，含义如前文所述。</p>
-<p>第二到第 n+1 行输入矩阵 A。<br>第 i+2（0≤i&lt;n）行包含用空格分隔的 m 个整数，依次为 Ai0,Ai1,⋯,Ai(m−1)。</p>
-<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出仅一行，包含用空格分隔的 L 个整数 h[0],h[1],⋯,h[L−1]，表示输入图像的灰度直方图。</p>
-<h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 4 16</span><br><span class="line">0 1 2 3</span><br><span class="line">4 5 6 7</span><br><span class="line">8 9 10 11</span><br><span class="line">12 13 14 15</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">7 11 8</span><br><span class="line">0 7 0 0 0 7 0 0 7 7 0</span><br><span class="line">7 0 7 0 7 0 7 0 7 0 7</span><br><span class="line">7 0 0 0 7 0 0 0 7 0 7</span><br><span class="line">7 0 0 0 0 7 0 0 7 7 0</span><br><span class="line">7 0 0 0 0 0 7 0 7 0 0</span><br><span class="line">7 0 7 0 7 0 7 0 7 0 0</span><br><span class="line">0 7 0 0 0 7 0 0 7 0 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">48 0 0 0 0 0 0 29</span><br></pre></td></tr></table></figure>
-
-<h3 id="评测用例规模与约定"><a href="#评测用例规模与约定" class="headerlink" title="评测用例规模与约定"></a>评测用例规模与约定</h3><p>全部的测试数据满足 0&lt;n,m≤500 且 4≤L≤256。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> decucin</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: TODO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/9/21 8:15</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> n = in.nextInt();</span><br><span class="line">        <span class="keyword">int</span> m = in.nextInt();</span><br><span class="line">        <span class="keyword">int</span> l = in.nextInt();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] ps = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">260</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; ++j)&#123;</span><br><span class="line">                <span class="keyword">int</span> x = in.nextInt();</span><br><span class="line">                ps[x]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; l; ++i)&#123;</span><br><span class="line">            System.out.print(ps[i] + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>此题实际需要的是将各个像素对应的频率输出即可，题目中的测试数据L满足4&lt;=l&lt;=256，故考虑额外生成一个N=260的数组，以此数组中的每个位置对应的值作为其出现的次数，之后只需将每个数进行读取，若读到的数字为x，那将新生成矩阵中位置x的值自增1即可，最后进行输出。</p>
-<h2 id="邻域均值"><a href="#邻域均值" class="headerlink" title="邻域均值"></a>邻域均值</h2><h3 id="试题背景"><a href="#试题背景" class="headerlink" title="试题背景"></a>试题背景</h3><p>顿顿在学习了数字图像处理后，想要对手上的一副灰度图像进行降噪处理。不过该图像仅在较暗区域有很多噪点，如果贸然对全图进行降噪，会在抹去噪点的同时也模糊了原有图像。因此顿顿打算先使用<strong>邻域均值</strong>来判断一个像素是否处于<strong>较暗区域</strong>，然后仅对处于<strong>较暗区域</strong>的像素进行降噪处理。</p>
-<h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p>待处理的灰度图像长宽皆为 n 个像素，可以表示为一个 n×n 大小的矩阵 A，其中每个元素是一个 [0,L) 范围内的整数，表示对应位置像素的灰度值。<br>对于矩阵中任意一个元素 Aij（0≤i,j&lt;n），其<strong>邻域</strong>定义为附近若干元素的集和：</p>
-<p>Neighbor(i,j,r)={Axy|0≤x,y&lt;n and |x−i|≤r and |y−j|≤r}</p>
-<p>这里使用了一个额外的参数 r 来指明 Aij 附近元素的具体范围。根据定义，易知 Neighbor(i,j,r) 最多有 (2r+1)2 个元素。</p>
-<p>如果元素 Aij <strong>邻域</strong>中所有元素的<strong>平均值</strong>小于或等于一个给定的阈值 t，我们就认为该元素对应位置的像素处于<strong>较暗区域</strong>。<br>下图给出了两个例子，左侧图像的较暗区域在右侧图像中展示为黑色，其余区域展示为白色。</p>
-<p><img src="http://118.190.20.162/RequireFile.do?fid=9GqFey2d" alt="example.jpg"></p>
-<p>现给定邻域参数 r 和阈值 t，试统计输入灰度图像中有多少像素处于<strong>较暗区域</strong>。</p>
-<h3 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入共 n+1 行。</p>
-<p>输入的第一行包含四个用空格分隔的正整数 n、L、r 和 t，含义如前文所述。</p>
-<p>第二到第 n+1 行输入矩阵 A。</p>
-<p>第 i+2（0≤i&lt;n）行包含用空格分隔的 n 个整数，依次为 Ai0,Ai1,⋯,Ai(n−1)。</p>
-<h3 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一个整数，表示输入灰度图像中处于较暗区域的像素总数。</p>
-<h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 16 1 6</span><br><span class="line">0 1 2 3</span><br><span class="line">4 5 6 7</span><br><span class="line">8 9 10 11</span><br><span class="line">12 13 14 15</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输入-3"><a href="#样例输入-3" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">11 8 2 2</span><br><span class="line">0 0 0 0 0 0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0 0 0 0 0 0</span><br><span class="line">0 7 0 0 0 7 0 0 7 7 0</span><br><span class="line">7 0 7 0 7 0 7 0 7 0 7</span><br><span class="line">7 0 0 0 7 0 0 0 7 0 7</span><br><span class="line">7 0 0 0 0 7 0 0 7 7 0</span><br><span class="line">7 0 0 0 0 0 7 0 7 0 0</span><br><span class="line">7 0 7 0 7 0 7 0 7 0 0</span><br><span class="line">0 7 0 0 0 7 0 0 7 0 0</span><br><span class="line">0 0 0 0 0 0 0 0 0 0 0</span><br><span class="line">0 0 0 0 0 0 0 0 0 0 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-3"><a href="#样例输出-3" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">83</span><br></pre></td></tr></table></figure>
-
-<h3 id="评测用例规模与约定-1"><a href="#评测用例规模与约定-1" class="headerlink" title="评测用例规模与约定"></a>评测用例规模与约定</h3><p>70% 的测试数据满足 n≤100、r≤10。</p>
-<p>全部的测试数据满足 0&lt;n≤600、0&lt;r≤100 且 2≤t&lt;L≤256。</p>
-<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> decucin</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: TODO</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/9/21 8:15</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> n = in.nextInt();</span><br><span class="line">        <span class="keyword">int</span> l = in.nextInt();</span><br><span class="line">        <span class="keyword">int</span> r = in.nextInt();</span><br><span class="line">        <span class="keyword">int</span> t = in.nextInt();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[][] s = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">610</span>][<span class="number">610</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j)&#123;</span><br><span class="line">                <span class="keyword">int</span> x = in.nextInt();</span><br><span class="line">                s[i][j] = x + s[i - <span class="number">1</span>][j] + s[i][j - <span class="number">1</span>] - s[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j)&#123;</span><br><span class="line">                <span class="keyword">int</span> x1 = Math.max(<span class="number">1</span>, i - r), y1 = Math.max(<span class="number">1</span>, j - r);</span><br><span class="line">                <span class="keyword">int</span> x2 = Math.min(n, i + r), y2 = Math.min(n, j + r);</span><br><span class="line">                <span class="keyword">if</span>((s[x2][y2] - s[x2][y1 - <span class="number">1</span>] - s[x1 - <span class="number">1</span>][y2] + s[x1 - <span class="number">1</span>][y1 - <span class="number">1</span>]) &lt;= t * ((x2 - x1 + <span class="number">1</span>) * (y2 - y1 + <span class="number">1</span>)))&#123;</span><br><span class="line">                    res++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>这里涉及到邻域均值，即数组内矩形的均值，考虑使用二维前缀和进行解决，以此便可遍历一次数组就得到所有位置的前缀和，之后便是遍历数组中的每一个元素，以其作为矩形中心，根据题意求均值，但需要注意的是数组越界问题，因此在坐标选择时可考虑利用最值防止其越界。</p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>此处由于涉及到前一元素的值，故下标需从1开始，索引为0的位置默认也是0。求前缀和是数组元素从1开始，那么在计算均值时数组也要从1开始数据方为有效数据。</p>
-<h2 id="DHCP服务器"><a href="#DHCP服务器" class="headerlink" title="DHCP服务器"></a>DHCP服务器</h2><h3 id="试题背景-1"><a href="#试题背景-1" class="headerlink" title="试题背景"></a>试题背景</h3><p><strong>动态主机配置协议</strong>（Dynamic Host Configuration Protocol, DHCP）是一种自动为网络客户端分配 IP 地址的网络协议。当支持该协议的计算机刚刚接入网络时，它可以启动一个 DHCP 客户端程序。后者可以通过一定的网络报文交互，从 DHCP 服务器上获得 IP 地址等网络配置参数，从而能够在用户不干预的情况下，自动完成对计算机的网络设置，方便用户连接网络。DHCP 协议的工作过程如下：</p>
-<ol>
-<li>当 DHCP 协议启动的时候，DHCP 客户端向网络中广播发送 Discover 报文，请求 IP 地址配置；</li>
-<li>当 DHCP 服务器收到 Discover 报文时，DHCP 服务器根据报文中的参数选择一个尚未分配的 IP 地址，分配给该客户端。DHCP 服务器用 Offer 报文将这个信息传达给客户端；</li>
-<li>客户端收集收到的 Offer 报文。由于网络中可能存在多于一个 DHCP 服务器，因此客户端可能收集到多个 Offer 报文。客户端从这些报文中选择一个，并向网络中广播 Request 报文，表示选择这个 DHCP 服务器发送的配置；</li>
-<li>DHCP 服务器收到 Request 报文后，首先判断该客户端是否选择本服务器分配的地址：如果不是，则在本服务器上解除对那个 IP 地址的占用；否则则再次确认分配的地址有效，并向客户端发送 Ack 报文，表示确认配置有效，Ack 报文中包括配置的有效时间。如果 DHCP 发现分配的地址无效，则返回 Nak 报文；</li>
-<li>客户端收到 Ack 报文后，确认服务器分配的地址有效，即确认服务器分配的地址未被其它客户端占用，则完成网络配置，同时记录配置的有效时间，出于简化的目的，我们不考虑被占用的情况。若客户端收到 Nak 报文，则从步骤 1 重新开始；</li>
-<li>客户端在到达配置的有效时间前，再次向 DHCP 服务器发送 Request 报文，表示希望延长 IP 地址的有效期。DHCP 服务器按照步骤 4 确定是否延长，客户端按照步骤 5 处理后续的配置；</li>
-</ol>
-<p>在本题目中，你需要理解 DHCP 协议的工作过程，并按照题目的要求实现一个简单的 DHCP 服务器。</p>
-<h3 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h3><h4 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h4><p>为了便于实现，我们简化地规定 DHCP 数据报文的格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;发送主机&gt; &lt;接收主机&gt; &lt;报文类型&gt; &lt;IP 地址&gt; &lt;过期时刻&gt;</span><br></pre></td></tr></table></figure>
-
-<p>None</p>
-<p>DHCP 数据报文的各个部分由空格分隔，其各个部分的定义如下：</p>
-<ul>
-<li>发送主机：是发送报文的主机名，<strong>主机名</strong>是由小写字母、数字组成的字符串，唯一地表示了一个主机；</li>
-<li>接收主机：当有特定的接收主机时，是接收报文的主机名；当没有特定的接收主机时，为一个星号（<code>*</code>）；</li>
-<li>报文类型：是三个大写字母，取值如下：<ul>
-<li><code>DIS</code>：表示 Discover 报文；</li>
-<li><code>OFR</code>：表示 Offer 报文；</li>
-<li><code>REQ</code>：表示 Request 报文；</li>
-<li><code>ACK</code>：表示 Ack 报文；</li>
-<li><code>NAK</code>：表示 Nak 报文；</li>
-</ul>
-</li>
-<li>IP 地址，是一个非负整数：<ul>
-<li>对于 Discover 报文，该部分在发送的时候为 0，在接收的时候忽略；</li>
-<li>对于其它报文，为正整数，表示一个 IP 地址；</li>
-</ul>
-</li>
-<li>过期时刻，是一个非负整数：<ul>
-<li>对于 Offer、Ack 报文，是一个正整数，表示服务器授予客户端的 IP 地址的过期时刻；</li>
-<li>对于 Discover、Request 报文，若为正整数，表示客户端期望服务器授予的过期时刻；</li>
-<li>对于其它报文，该部分在发送的时候为 0，在接收的时候忽略。</li>
-</ul>
-</li>
-</ul>
-<p>例如下列都是合法的 DHCP 数据报文：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a * DIS 0 0</span><br><span class="line">d a ACK 50 1000</span><br></pre></td></tr></table></figure>
-
-<h4 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h4><p>为了 DHCP 服务器能够正确分配 IP 地址，DHCP 需要接受如下配置：</p>
-<ul>
-<li>地址池大小 N：表示能够分配给客户端的 IP 地址的数目，且能分配的 IP 地址是 1,2,…,N；</li>
-<li>默认过期时间 Tdef：表示分配给客户端的 IP 地址的默认的过期时间长度；</li>
-<li>过期时间的上限和下限 Tmax、Tmin：表示分配给客户端的 IP 地址的最长过期时间长度和最短过期时间长度，客户端不能请求比这个更长或更短的过期时间；</li>
-<li>本机名称 H：表示运行 DHCP 服务器的主机名。</li>
-</ul>
-<h4 id="分配策略"><a href="#分配策略" class="headerlink" title="分配策略"></a>分配策略</h4><p>当客户端请求 IP 地址时，首先检查此前是否给该客户端分配过 IP 地址，且该 IP 地址在此后没有被分配给其它客户端。如果是这样的情况，则直接将 IP 地址分配给它，否则，<br>总是分配给它最小的尚未占用过的那个 IP 地址。如果这样的地址不存在，则分配给它最小的此时未被占用的那个 IP 地址。如果这样的地址也不存在，说明地址池已经分配完毕，因此拒绝分配地址。</p>
-<h4 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h4><p>在 DHCP 启动时，首先初始化 IP 地址池，将所有地址设置状态为未分配，占用者为空，并清零过期时刻。<br>其中地址的状态有未分配、待分配、占用、过期四种。<br>处于未分配状态的 IP 地址没有占用者，而其余三种状态的 IP 地址均有一名占用者。<br>处于待分配和占用状态的 IP 地址拥有一个大于零的过期时刻。在到达该过期时刻时，若该地址的状态是待分配，则该地址的状态会自动变为未分配，且占用者清空，过期时刻清零；否则该地址的状态会由占用自动变为过期，且过期时刻清零。处于未分配和过期状态的 IP 地址过期时刻为零，即没有过期时刻。</p>
-<p>对于收到的报文，设其收到的时刻为 t。处理细节如下：</p>
-<ol>
-<li>判断接收主机是否为本机，或者为 <code>*</code>，若不是，则判断类型是否为 Request，若不是，则不处理；</li>
-<li>若类型不是 Discover、Request 之一，则不处理；</li>
-<li>若接收主机为 <code>*</code>，但类型不是 Discover，或接收主机是本机，但类型是 Discover，则不处理。</li>
-</ol>
-<p>对于 Discover 报文，按照下述方法处理：</p>
-<ol>
-<li>检查是否有占用者为发送主机的 IP 地址：<ul>
-<li>若有，则选取该 IP 地址；</li>
-<li>若没有，则选取最小的状态为未分配的 IP 地址；</li>
-<li>若没有，则选取最小的状态为过期的 IP 地址；</li>
-<li>若没有，则不处理该报文，处理结束；</li>
-</ul>
-</li>
-<li>将该 IP 地址状态设置为待分配，占用者设置为发送主机；</li>
-<li>若报文中过期时刻为 0 ，则设置过期时刻为 t+Tdef；否则根据报文中的过期时刻和收到报文的时刻计算过期时间，判断是否超过上下限：若没有超过，则设置过期时刻为报文中的过期时刻；否则则根据超限情况设置为允许的最早或最晚的过期时刻；</li>
-<li>向发送主机发送 Offer 报文，其中，IP 地址为选定的 IP 地址，过期时刻为所设定的过期时刻。</li>
-</ol>
-<p>对于 Request 报文，按照下述方法处理：</p>
-<ol>
-<li>检查接收主机是否为本机：<ul>
-<li>若不是，则找到占用者为发送主机的所有 IP 地址，对于其中状态为待分配的，将其状态设置为未分配，并清空其占用者，清零其过期时刻，处理结束；</li>
-</ul>
-</li>
-<li>检查报文中的 IP 地址是否在地址池内，且其占用者为发送主机，若不是，则向发送主机发送 Nak 报文，处理结束；</li>
-<li>无论该 IP 地址的状态为何，将该 IP 地址的状态设置为占用；</li>
-<li>与 Discover 报文相同的方法，设置 IP 地址的过期时刻；</li>
-<li>向发送主机发送 Ack 报文。</li>
-</ol>
-<p>上述处理过程中，地址池中地址的状态的变化可以概括为如下图所示的状态转移图。为了简洁，该图中没有涵盖需要回复 Nak 报文的情况。</p>
-<p><img src="http://118.190.20.162/RequireFile.do?fid=qUtXBjol" alt="state_h.jpg"></p>
-<h3 id="输入格式-2"><a href="#输入格式-2" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入的第一行包含用空格分隔的四个正整数和一个字符串，分别是：N、Tdef、Tmax、Tmin 和 H，保证 Tmin≤Tdef≤Tmax。</p>
-<p>输入的第二行是一个正整数 n，表示收到了 n 个报文。</p>
-<p>输入接下来有 n 行，第 (i+2) 行有空格分隔的正整数 ti 和约定格式的报文 Pi。表示收到的第 i 个报文是在 ti 时刻收到的，报文内容是 Pi。保证 ti&lt;ti+1。</p>
-<h3 id="输出格式-2"><a href="#输出格式-2" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出有若干行，每行是一个约定格式的报文。依次输出 DHCP 服务器发送的报文。</p>
-<h3 id="样例输入-4"><a href="#样例输入-4" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">4 5 10 5 dhcp</span><br><span class="line">16</span><br><span class="line">1 a * DIS 0 0</span><br><span class="line">2 a dhcp REQ 1 0</span><br><span class="line">3 b a DIS 0 0</span><br><span class="line">4 b * DIS 3 0</span><br><span class="line">5 b * REQ 2 12</span><br><span class="line">6 b dhcp REQ 2 12</span><br><span class="line">7 c * DIS 0 11</span><br><span class="line">8 c dhcp REQ 3 11</span><br><span class="line">9 d * DIS 0 0</span><br><span class="line">10 d dhcp REQ 4 20</span><br><span class="line">11 a dhcp REQ 1 20</span><br><span class="line">12 c dhcp REQ 3 20</span><br><span class="line">13 e * DIS 0 0</span><br><span class="line">14 e dhcp REQ 2 0</span><br><span class="line">15 b dhcp REQ 2 25</span><br><span class="line">16 b * DIS 0 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-4"><a href="#样例输出-4" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dhcp a OFR 1 6</span><br><span class="line">dhcp a ACK 1 7</span><br><span class="line">dhcp b OFR 2 9</span><br><span class="line">dhcp b ACK 2 12</span><br><span class="line">dhcp c OFR 3 12</span><br><span class="line">dhcp c ACK 3 13</span><br><span class="line">dhcp d OFR 4 14</span><br><span class="line">dhcp d ACK 4 20</span><br><span class="line">dhcp a ACK 1 20</span><br><span class="line">dhcp c ACK 3 20</span><br><span class="line">dhcp e OFR 2 18</span><br><span class="line">dhcp e ACK 2 19</span><br><span class="line">dhcp b NAK 2 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h3><p>输入第一行，分别设置了 DHCP 的相关参数，并收到了 16 个报文。</p>
-<p>第 1 个报文和第 2 个报文是客户端 <code>a</code> 正常请求地址，服务器为其分配了地址 1，相应地设置了过期时刻是 7（即当前时刻 2 加上默认过期时间 5）。</p>
-<p>第 3 个报文不符合 Discover 报文的要求，不做任何处理。</p>
-<p>第 4 个报文 <code>b</code> 发送的 Discover 报文虽然有 IP 地址 3，但是按照处理规则，这个字段被忽略，因此服务器返回 Offer 报文，过期时刻是 9。</p>
-<p>第 5 个报文中，Request 报文不符合接收主机是 DHCP 服务器本机的要求，因此不做任何处理。</p>
-<p>第 6 个报文是 <code>b</code> 发送的 Request 报文，其中设置了过期时刻是 12，没有超过最长过期时间，因此返回的 Ack 报文中过期时刻也是 12。</p>
-<p>第 7 个报文中，过期时刻 11 小于最短过期时间，因此返回的过期时刻是 12。虽然此时为 <code>a</code> 分配的地址 1 过期，但是由于还有状态为未分配的地址 3，因此为 <code>c</code> 分配地址 3。第 8 个报文同理，为 <code>c</code> 分配的地址过期时刻是 13。</p>
-<p>第 9、10 两个报文中，为 <code>d</code> 分配了地址 4，过期时刻是 20。</p>
-<p>第 11 个报文中，<code>a</code> 请求重新获取此前为其分配的地址 1，虽然为其分配的地址过期，但是由于尚未分配给其它客户端，因此 DHCP 服务器可以直接为其重新分配该地址，并重新设置过期时刻为 20。</p>
-<p>第 12 个报文中，<code>c</code> 请求延长其地址的过期时刻为 20。DHCP 正常向其回复 Ack 报文。</p>
-<p>第 13、14 个报文中，<code>e</code> 试图请求地址。此时地址池中已经没有处于“未分配”状态的地址了，但是有此前分配给 <code>b</code> 的地址 2 的状态是“过期”，因此把该地址重新分配给 <code>e</code>。</p>
-<p>第 15 个报文中，<code>b</code> 试图重新获取此前为其分配的地址 2，但是此时该地址已经被分配给 <code>e</code>，因此返回 Nak 报文。</p>
-<p>第 16 个报文中，<code>b</code> 试图重新请求分配一个 IP 地址，但是此时地址池中已经没有可用的地址了，因此忽略该请求。</p>
-<h3 id="样例输入-5"><a href="#样例输入-5" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">4 70 100 50 dhcp</span><br><span class="line">6</span><br><span class="line">5 a * OFR 2 100</span><br><span class="line">10 b * DIS 0 70</span><br><span class="line">15 b dhcp2 REQ 4 60</span><br><span class="line">20 c * DIS 0 70</span><br><span class="line">70 d * DIS 0 120</span><br><span class="line">75 d dhcp REQ 1 125</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例输出-5"><a href="#样例输出-5" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dhcp b OFR 1 70</span><br><span class="line">dhcp c OFR 1 70</span><br><span class="line">dhcp d OFR 1 120</span><br><span class="line">dhcp d ACK 1 125</span><br></pre></td></tr></table></figure>
-
-<h3 id="样例说明-1"><a href="#样例说明-1" class="headerlink" title="样例说明"></a>样例说明</h3><p>在本样例中，DHCP 服务器一共收到了 6 个报文，处理情况如下：</p>
-<p>第 1 个报文不是 DHCP 服务器需要处理的报文，因此不回复任何报文。</p>
-<p>第 2 个报文中，<code>b</code> 请求分配 IP 地址，因此 DHCP 服务器将地址 1 分配给 <code>b</code>，此时，地址 1 进入待分配状态，DHCP 服务器向 <code>b</code> 发送 Offer 报文。</p>
-<p>第 3 个报文中，<code>b</code> 发送的 REQ 报文是发给非本服务器的，因此需要将地址池中所有拥有者是 <code>b</code> 的待分配状态的地址修改为未分配。</p>
-<p>第 4 个报文中，<code>c</code> 请求分配 IP 地址。由于地址 1 此时是未分配状态，因此将该地址分配给它，向它发送 Offer 报文，地址 1 进入待分配状态。</p>
-<p>第 5、6 个报文中，<code>d</code> 请求分配 IP 地址。注意到在收到第 5 个报文时，已经是时刻 70，地址 1 的过期时刻已到，它的状态已经被修改为了未分配，因此 DHCP 服务器仍然将地址 1 分配给 <code>d</code>。</p>
-<h3 id="评测用例规模与约定-2"><a href="#评测用例规模与约定-2" class="headerlink" title="评测用例规模与约定"></a>评测用例规模与约定</h3><p>对于 20% 的数据，有 N≤200，且 n≤N，且输入仅含 Discover 报文，且 t&lt;Tmin；</p>
-<p>对于 50% 的数据，有 N≤200，且 n≤N，且 t&lt;Tmin，且报文的接收主机或为本机，或为 <code>*</code>；</p>
-<p>对于 70% 的数据，有 N≤1000，且 n≤N，且报文的接收主机或为本机，或为 <code>*</code>；</p>
-<p>对于 100% 的数据，有 N≤10000，且 n≤10000，主机名的长度不超过 20，且 t,Tmin,Tdefault,Tmax≤109，输入的报文格式符合题目要求，且数字不超过 109。</p>
-<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3>
-      
-    </div>
-
-    
-    
-    
-
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/06/02/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%B0%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E7%AB%AF%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Decucin">
-      <meta itemprop="description" content="喜欢简单的事物和明朗的关系">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog of Decucin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/02/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%B0%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E7%AB%AF%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">第一次将小程序后端部署到服务器时遇到的问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-02 09:29:20" itemprop="dateCreated datePublished" datetime="2021-06-02T09:29:20+08:00">2021-06-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-09 19:41:29" itemprop="dateModified" datetime="2021-06-09T19:41:29+08:00">2021-06-09</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="第一次将小程序后端部署到服务器时遇到的问题"><a href="#第一次将小程序后端部署到服务器时遇到的问题" class="headerlink" title="第一次将小程序后端部署到服务器时遇到的问题"></a>第一次将小程序后端部署到服务器时遇到的问题</h1><p>第一次将小程序后端部署到服务器遇到很多让人头大的问题（因为用到了tesseract），项目是部署在Linux服务器，而Linux下又没有对应的环境。网上的教程大多一致（而且尝试之后并没用），因此记录一下出现的问题以及解决的方案。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/06/02/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%B0%86%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E7%AB%AF%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Decucin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2022/03/13/%E7%89%9B%E5%AE%A2%E9%A2%98%E8%A7%A3/" title="牛客题解">http://yoursite.com/2022/03/13/牛客题解/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-    
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/14/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Decucin">
-      <meta itemprop="description" content="喜欢简单的事物和明朗的关系">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog of Decucin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/14/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" class="post-title-link" itemprop="url">leetcode每日一题/leetcode每日一题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-14 17:47:55" itemprop="dateCreated datePublished" datetime="2021-04-14T17:47:55+08:00">2021-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-25 23:19:11" itemprop="dateModified" datetime="2021-04-25T23:19:11+08:00">2021-04-25</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>16k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>14 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>此处记录我leetcode的每日一题题解，由于是初学，因此很多地方可能会解释不清，所给题解也不一定是最优解（大部分是引用了官方题解）！</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/14/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
 
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/02/%E7%94%A8C%E6%88%96C++%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E5%B9%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E8%BF%9B%E8%A1%8C%E5%A4%8D%E6%95%B0%E8%BF%90%E7%AE%97%E7%9A%84%E6%BC%94%E7%A4%BA%E7%A8%8B%E5%BA%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Decucin">
-      <meta itemprop="description" content="喜欢简单的事物和明朗的关系">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog of Decucin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/02/%E7%94%A8C%E6%88%96C++%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E5%B9%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E8%BF%9B%E8%A1%8C%E5%A4%8D%E6%95%B0%E8%BF%90%E7%AE%97%E7%9A%84%E6%BC%94%E7%A4%BA%E7%A8%8B%E5%BA%8F/" class="post-title-link" itemprop="url">用C或C++语言设计并实现一个可进行复数运算的演示程序</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-04-02 23:26:53 / 修改时间：23:43:41" itemprop="dateCreated datePublished" datetime="2021-04-02T23:26:53+08:00">2021-04-02</time>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="用C或C-语言设计并实现一个可进行复数运算的演示程序"><a href="#用C或C-语言设计并实现一个可进行复数运算的演示程序" class="headerlink" title="用C或C++语言设计并实现一个可进行复数运算的演示程序"></a>用C或C++语言设计并实现一个可进行复数运算的演示程序</h1><p>上学期的编程实践，觉得很有意思，然后这学期新学了c++，便想到利用c++对上学期的编程实践项目进行复原。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/02/%E7%94%A8C%E6%88%96C++%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E5%B9%B6%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%AF%E8%BF%9B%E8%A1%8C%E5%A4%8D%E6%95%B0%E8%BF%90%E7%AE%97%E7%9A%84%E6%BC%94%E7%A4%BA%E7%A8%8B%E5%BA%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/01/leetcode%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/2022%E5%B9%B41%E6%9C%88/" rel="prev" title="leetcode每日一题/2022年1月">
+      <i class="fa fa-chevron-left"></i> leetcode每日一题/2022年1月
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
   
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86%EF%BC%88C%E8%AF%AD%E8%A8%80%E7%89%88%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Decucin">
-      <meta itemprop="description" content="喜欢简单的事物和明朗的关系">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog of Decucin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86%EF%BC%88C%E8%AF%AD%E8%A8%80%E7%89%88%EF%BC%89/" class="post-title-link" itemprop="url">数据结构算法合集（C语言版）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-27 13:19:23" itemprop="dateCreated datePublished" datetime="2020-11-27T13:19:23+08:00">2020-11-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-27 23:58:12" itemprop="dateModified" datetime="2020-09-27T23:58:12+08:00">2020-09-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>50k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>46 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="数据结构算法合集（C语言版）"><a href="#数据结构算法合集（C语言版）" class="headerlink" title="数据结构算法合集（C语言版）"></a>数据结构算法合集（C语言版）</h1><p>在学习《数据结构（C语言版）》一书时，我将其中的算法在此记录，以便有需要时进行查阅。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86%EF%BC%88C%E8%AF%AD%E8%A8%80%E7%89%88%EF%BC%89/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Decucin">
-      <meta itemprop="description" content="喜欢简单的事物和明朗的关系">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog of Decucin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/27/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="post-title-link" itemprop="url">准备工作</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-27 12:30:15" itemprop="dateCreated datePublished" datetime="2020-11-27T12:30:15+08:00">2020-11-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-11 13:06:58" itemprop="dateModified" datetime="2020-05-11T13:06:58+08:00">2020-05-11</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>315</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这是搭建个人博客的前提，<strong>重中之重</strong>。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/27/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/%E6%88%91%E5%9C%A8%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Decucin">
-      <meta itemprop="description" content="喜欢简单的事物和明朗的关系">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog of Decucin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/27/%E6%88%91%E5%9C%A8%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">我在链表中出现的问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-27 12:30:15" itemprop="dateCreated datePublished" datetime="2020-11-27T12:30:15+08:00">2020-11-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-19 14:55:46" itemprop="dateModified" datetime="2020-05-19T14:55:46+08:00">2020-05-19</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="我在链表中出现的问题："><a href="#我在链表中出现的问题：" class="headerlink" title="我在链表中出现的问题："></a>我在链表中出现的问题：</h1><p>链表是一种比较基础的数据结构，与数组相比，各有优劣，链表更利于删除数据，但数组更便于访问数据。</p>
-<p>当我初学链表时犯过以下错误：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/27/%E6%88%91%E5%9C%A8%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/%E9%80%89%E5%8F%96%E5%90%88%E9%80%82%E4%B8%BB%E9%A2%98%EF%BC%8C%E7%BE%8E%E5%8C%96%E5%8D%9A%E5%AE%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Decucin">
-      <meta itemprop="description" content="喜欢简单的事物和明朗的关系">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog of Decucin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/27/%E9%80%89%E5%8F%96%E5%90%88%E9%80%82%E4%B8%BB%E9%A2%98%EF%BC%8C%E7%BE%8E%E5%8C%96%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">选取合适主题，美化博客</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-27 12:30:15" itemprop="dateCreated datePublished" datetime="2020-11-27T12:30:15+08:00">2020-11-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-08 00:17:00" itemprop="dateModified" datetime="2020-05-08T00:17:00+08:00">2020-05-08</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>627</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>可以看到，我们博客的主题十分单调，并不好看，因此我们需要为我们的博客更换主题，这里我推荐next主题，它是目前应用较多的hexo主题。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/27/%E9%80%89%E5%8F%96%E5%90%88%E9%80%82%E4%B8%BB%E9%A2%98%EF%BC%8C%E7%BE%8E%E5%8C%96%E5%8D%9A%E5%AE%A2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-  
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
           </div>
@@ -1579,6 +682,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#链表部分"><span class="nav-number">1.</span> <span class="nav-text">链表部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BM1-反转链表"><span class="nav-number">1.1.</span> <span class="nav-text">BM1 反转链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">1.1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现"><span class="nav-number">1.1.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM2-链表内指定区间反转"><span class="nav-number">1.2.</span> <span class="nav-text">BM2 链表内指定区间反转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM3-链表中的节点每k个一组翻转"><span class="nav-number">1.3.</span> <span class="nav-text">BM3 链表中的节点每k个一组翻转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM4-合并两个排序的链表"><span class="nav-number">1.4.</span> <span class="nav-text">BM4 合并两个排序的链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-3"><span class="nav-number">1.4.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM5-合并k个已排序的链表"><span class="nav-number">1.5.</span> <span class="nav-text">BM5 合并k个已排序的链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-4"><span class="nav-number">1.5.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-4"><span class="nav-number">1.5.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-4"><span class="nav-number">1.5.3.</span> <span class="nav-text">Java代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-5"><span class="nav-number">1.5.4.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-5"><span class="nav-number">1.5.5.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM6-判断链表中是否有环"><span class="nav-number">1.6.</span> <span class="nav-text">BM6 判断链表中是否有环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-5"><span class="nav-number">1.6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-6"><span class="nav-number">1.6.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-6"><span class="nav-number">1.6.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM7-链表中环的入口节点"><span class="nav-number">1.7.</span> <span class="nav-text">BM7 链表中环的入口节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-6"><span class="nav-number">1.7.1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述"><span class="nav-number">1.7.1.1.</span> <span class="nav-text">输入描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值描述"><span class="nav-number">1.7.1.2.</span> <span class="nav-text">返回值描述</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-7"><span class="nav-number">1.7.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-7"><span class="nav-number">1.7.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM8-链表中倒数最后k个节点"><span class="nav-number">1.8.</span> <span class="nav-text">BM8 链表中倒数最后k个节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-7"><span class="nav-number">1.8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-8"><span class="nav-number">1.8.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-8"><span class="nav-number">1.8.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM9-删除链表的倒数第n个节点"><span class="nav-number">1.9.</span> <span class="nav-text">BM9 删除链表的倒数第n个节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-8"><span class="nav-number">1.9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-9"><span class="nav-number">1.9.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-9"><span class="nav-number">1.9.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM10-两个链表的第一个公共结点"><span class="nav-number">1.10.</span> <span class="nav-text">BM10 两个链表的第一个公共结点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-9"><span class="nav-number">1.10.1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述："><span class="nav-number">1.10.1.1.</span> <span class="nav-text">输入描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值描述："><span class="nav-number">1.10.1.2.</span> <span class="nav-text">返回值描述：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-10"><span class="nav-number">1.10.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-10"><span class="nav-number">1.10.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM11-链表相加（二）"><span class="nav-number">1.11.</span> <span class="nav-text">BM11 链表相加（二）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-10"><span class="nav-number">1.11.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-11"><span class="nav-number">1.11.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-11"><span class="nav-number">1.11.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM12-单链表的排序问题"><span class="nav-number">1.12.</span> <span class="nav-text">BM12 单链表的排序问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-11"><span class="nav-number">1.12.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-12"><span class="nav-number">1.12.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-12"><span class="nav-number">1.12.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM13-判断一个链表是否是回文结构"><span class="nav-number">1.13.</span> <span class="nav-text">BM13 判断一个链表是否是回文结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-12"><span class="nav-number">1.13.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-13"><span class="nav-number">1.13.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-13"><span class="nav-number">1.13.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM14-链表的奇偶重拍"><span class="nav-number">1.14.</span> <span class="nav-text">BM14 链表的奇偶重拍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-13"><span class="nav-number">1.14.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-14"><span class="nav-number">1.14.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-14"><span class="nav-number">1.14.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM15-删除有序链表中重复的元素-I"><span class="nav-number">1.15.</span> <span class="nav-text">BM15 删除有序链表中重复的元素-I</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-14"><span class="nav-number">1.15.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-15"><span class="nav-number">1.15.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-15"><span class="nav-number">1.15.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM16-删除有序列表中重复的元素-II"><span class="nav-number">1.16.</span> <span class="nav-text">BM16 删除有序列表中重复的元素-II</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-15"><span class="nav-number">1.16.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-16"><span class="nav-number">1.16.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-16"><span class="nav-number">1.16.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二分查找-排序"><span class="nav-number">2.</span> <span class="nav-text">二分查找&#x2F;排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BM17-二分查找-I"><span class="nav-number">2.1.</span> <span class="nav-text">BM17 二分查找-I</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-16"><span class="nav-number">2.1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-17"><span class="nav-number">2.1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-17"><span class="nav-number">2.1.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM18-二维数组中的查找"><span class="nav-number">2.2.</span> <span class="nav-text">BM18 二维数组中的查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-17"><span class="nav-number">2.2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-18"><span class="nav-number">2.2.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-18"><span class="nav-number">2.2.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM19-寻找峰值"><span class="nav-number">2.3.</span> <span class="nav-text">BM19 寻找峰值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-18"><span class="nav-number">2.3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-19"><span class="nav-number">2.3.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-19"><span class="nav-number">2.3.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM20-数组中的逆序对"><span class="nav-number">2.4.</span> <span class="nav-text">BM20 数组中的逆序对</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-19"><span class="nav-number">2.4.1.</span> <span class="nav-text">题目描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-20"><span class="nav-number">2.5.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-20"><span class="nav-number">2.5.1.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM21-旋转数组的最小数字"><span class="nav-number">2.6.</span> <span class="nav-text">BM21 旋转数组的最小数字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-20"><span class="nav-number">2.6.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-21"><span class="nav-number">2.6.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-21"><span class="nav-number">2.6.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM22-比较版本号"><span class="nav-number">2.7.</span> <span class="nav-text">BM22 比较版本号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-21"><span class="nav-number">2.7.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-22"><span class="nav-number">2.7.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现如下"><span class="nav-number">2.7.3.</span> <span class="nav-text">Java代码实现如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-23"><span class="nav-number">2.7.4.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-22"><span class="nav-number">2.7.5.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树"><span class="nav-number">2.8.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BM23-二叉树的前序遍历"><span class="nav-number">2.8.1.</span> <span class="nav-text">BM23 二叉树的前序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-22"><span class="nav-number">2.8.2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-24"><span class="nav-number">2.8.3.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-23"><span class="nav-number">2.8.4.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM24-二叉树的中序遍历"><span class="nav-number">2.9.</span> <span class="nav-text">BM24 二叉树的中序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-23"><span class="nav-number">2.9.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-25"><span class="nav-number">2.9.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-24"><span class="nav-number">2.9.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM25-二叉树的后序遍历"><span class="nav-number">2.10.</span> <span class="nav-text">BM25 二叉树的后序遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-24"><span class="nav-number">2.10.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-26"><span class="nav-number">2.10.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-25"><span class="nav-number">2.10.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM26-求二叉树的层序遍历"><span class="nav-number">2.11.</span> <span class="nav-text">BM26 求二叉树的层序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述-25"><span class="nav-number">2.12.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-27"><span class="nav-number">2.12.1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-26"><span class="nav-number">2.12.2.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM27-按之字形顺序打印二叉树"><span class="nav-number">2.13.</span> <span class="nav-text">BM27 按之字形顺序打印二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-26"><span class="nav-number">2.13.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-28"><span class="nav-number">2.13.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-27"><span class="nav-number">2.13.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM28-二叉树的最大深度"><span class="nav-number">2.14.</span> <span class="nav-text">BM28 二叉树的最大深度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-27"><span class="nav-number">2.14.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-29"><span class="nav-number">2.14.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-28"><span class="nav-number">2.14.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM29-二叉树中和为某一值的路径"><span class="nav-number">2.15.</span> <span class="nav-text">BM29 二叉树中和为某一值的路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-28"><span class="nav-number">2.15.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-30"><span class="nav-number">2.15.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-29"><span class="nav-number">2.15.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM30-二叉搜索树与双向链表"><span class="nav-number">2.16.</span> <span class="nav-text">BM30 二叉搜索树与双向链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-29"><span class="nav-number">2.16.1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输入描述：-1"><span class="nav-number">2.16.1.1.</span> <span class="nav-text">输入描述：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回值描述：-1"><span class="nav-number">2.16.1.2.</span> <span class="nav-text">返回值描述：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-31"><span class="nav-number">2.16.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-30"><span class="nav-number">2.16.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM31对称的二叉树"><span class="nav-number">2.17.</span> <span class="nav-text">BM31对称的二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-30"><span class="nav-number">2.17.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-32"><span class="nav-number">2.17.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-31"><span class="nav-number">2.17.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM32-合并二叉树"><span class="nav-number">2.18.</span> <span class="nav-text">BM32 合并二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-31"><span class="nav-number">2.18.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-33"><span class="nav-number">2.18.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-32"><span class="nav-number">2.18.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM33-二叉树的镜像"><span class="nav-number">2.19.</span> <span class="nav-text">BM33 二叉树的镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-32"><span class="nav-number">2.19.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-34"><span class="nav-number">2.19.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-33"><span class="nav-number">2.19.3.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BM34-判断是不是二叉搜索树"><span class="nav-number">2.20.</span> <span class="nav-text">BM34 判断是不是二叉搜索树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述-33"><span class="nav-number">2.20.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-35"><span class="nav-number">2.20.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-34"><span class="nav-number">2.20.3.</span> <span class="nav-text">Java代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-36"><span class="nav-number">2.20.4.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java代码实现-35"><span class="nav-number">2.20.5.</span> <span class="nav-text">Java代码实现</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
