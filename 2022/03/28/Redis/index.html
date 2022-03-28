@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="大部分内容取自CS-Notes开源项目，这里记录只是为了方便查阅。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis">
+<meta property="og:url" content="http://yoursite.com/2022/03/28/Redis/index.html">
+<meta property="og:site_name" content="Blog of Decucin">
+<meta property="og:description" content="大部分内容取自CS-Notes开源项目，这里记录只是为了方便查阅。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-28T12:42:18.000Z">
+<meta property="article:modified_time" content="2022-03-28T12:47:09.508Z">
+<meta property="article:author" content="Decucin">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="面试">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2022/03/28/Redis/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Redis | Blog of Decucin</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Blog of Decucin" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Blog of Decucin</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/03/28/Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Decucin">
+      <meta itemprop="description" content="喜欢简单的事物和明朗的关系">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Decucin">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Redis
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-28 20:42:18 / 修改时间：20:47:09" itemprop="dateCreated datePublished" datetime="2022-03-28T20:42:18+08:00">2022-03-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>大部分内容取自<a href="https://www.cyc2018.xyz/" target="_blank" rel="noopener">CS-Notes</a>开源项目，这里记录只是为了方便查阅。</p>
+<a id="more"></a>
+
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ul>
+<li>string: set key value</li>
+<li>list: rpush list_key value</li>
+<li>set: sadd set_key value</li>
+<li>zset: zadd zset_key score value</li>
+<li>hash: hset hash_key key value</li>
+</ul>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><p>字典中有两个Hash表，在扩容是将一个哈希表中的键值对rehash到另一个hash表上，完成之后释放空间并交换两个哈希表的角色（JVM分代也是将Servive分成两个区）。</p>
+<p>rehash采用的是渐进式：并不是一次性完成整个rehash操作，在rehash的过程中，若是当前正在rehash，那么插入元素时只插到dict[1]，每次增删改查操作都需要进行一次rehash，此外每隔一段时间也会触发一次rehash操作。</p>
+<h2 id="跳跃表"><a href="#跳跃表" class="headerlink" title="跳跃表"></a>跳跃表</h2><p>基于多指针有序链表实现，查找时先从上层指针开始找，找到对应区间后到下一层找，与红黑树等平衡树相比，插入快（不需要旋转等复杂操作），更容易实现，支持无锁操作。</p>
+<h1 id="Redis使用场景"><a href="#Redis使用场景" class="headerlink" title="Redis使用场景"></a>Redis使用场景</h1><h2 id="计数器"><a href="#计数器" class="headerlink" title="计数器"></a>计数器</h2><p>内存型数据库读写性能高，适合存储频繁读写的计数量</p>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>设置内存的最大使用量以及淘汰策略保证缓存命中率</p>
+<h2 id="查找表"><a href="#查找表" class="headerlink" title="查找表"></a>查找表</h2><p>与缓存类似，借助其快速的查找特性，但查找表不能丢失内容，缓存可以失效。</p>
+<h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><p>最好使用消息中间件</p>
+<h2 id="会话缓存"><a href="#会话缓存" class="headerlink" title="会话缓存"></a>会话缓存</h2><p>应用服务器无需存储会话信息，不具有状态，一个用户可以请求任意个服务器，实现高可用以及可伸缩性。</p>
+<h2 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h2><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>set可以实现集合的交并操作，实现共同好友等功能。</p>
+<p>zset用于实现有序操作，如排行榜等。</p>
+<h1 id="Redis与Memcached"><a href="#Redis与Memcached" class="headerlink" title="Redis与Memcached"></a>Redis与Memcached</h1><p>都是非关系型内存键值数据库。</p>
+<p>Memcached仅支持字符串类型，Redis支持五种</p>
+<p>Redis有两种持久化策略，RDB快照和AOF日志，Memcached不支持。</p>
+<p>Redis Cluster实现了分布式的支持，Memcached不支持，只能在客户端使用一致性哈希实现分布式存储。</p>
+<p>Memcached中的数据一直在内存中，Redis可以将很久不用的value放入磁盘。</p>
+<h1 id="键的过期时间"><a href="#键的过期时间" class="headerlink" title="键的过期时间"></a>键的过期时间</h1><p>Redis可以为每个键设置过期时间，对于散列表则只能为整个散列表设置过期时间。</p>
+<h1 id="数据淘汰策略"><a href="#数据淘汰策略" class="headerlink" title="数据淘汰策略"></a>数据淘汰策略</h1><p>设置内存最大使用量，超出时会施行数据淘汰策略。</p>
+<p>出于对性能的考虑，算法的实现并不是针对所有key，而是抽样小部分并从中选出被淘汰的key。</p>
+<p>做缓存时可以将最大内存使用量设置为热点数据占用的内存量，之后使用allkeys-lfu淘汰策略，将最近最少使用的数据淘汰。</p>
+<h1 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h1><ul>
+<li><p>RDB持久化</p>
+<p>将某个时间点的所有数据放到硬盘上。</p>
+<p>好处：可以将快照复制到其它服务器进而创建副本</p>
+<p>坏处：系统发生故障可能会丢失最后一次创建快照之后的数据；数据量大时保存快照时间会很长</p>
+</li>
+<li><p>AOF持久化</p>
+<p>把写命令添加到AOF文件的末尾。设置同步选项（先存储到缓冲区，然后由操作系统决定什么时候同步到磁盘）：always（每次都同步，降低性能）,everysec（每秒一次，合理），no（操作系统决定，实际上并不会带来多大的性能提升，也会增加系统崩溃时流失的数据量）。</p>
+<p>Redis有AOF重写特性，去除文件中冗余的写命令。（重写操作实际上不涉及原AOF文件，而是使用类似遍历数据库，使用set之类的命令保存数据库中所有信息）</p>
+</li>
+</ul>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>使用multi和exec命令将事务操作包围起来。</p>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>Redis：事件驱动程序。</p>
+<ul>
+<li>文件事件：对套接字操作的抽象。使用I/O多路复用程序来同时监听多个套接字，并将到达的事件传送给文件事件分派器，文件事件分派器再根据套接字产生的事件类型调用相应的事件处理器。</li>
+<li>时间事件<ul>
+<li>定时事件：在指定时间之内执行一次</li>
+<li>周期性事件：每隔指定事件就执行一次</li>
+</ul>
+</li>
+</ul>
+<p>将所有执行事件放在一个无序链表中，通过遍历整个链表查找出已到达的事件事件，并调用相应的事件处理器。</p>
+<h1 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h1><p>通过使用slaveof host port将一个服务器转化成另一个服务器的从服务器。</p>
+<p>一个从服务器只能有一个主服务器并且不支持主主复制。</p>
+<h2 id="连接过程"><a href="#连接过程" class="headerlink" title="连接过程"></a>连接过程</h2><ul>
+<li>主服务器创建快照发给从服务器并使用缓冲区记录执行的写命令。快照发送完毕后开始想从服务器发送存储在缓冲区的写命令</li>
+<li>从服务器丢弃所有旧数据，载入主服务器发来的快照文件，开始接受主服务器发来的写命令</li>
+<li>主服务器执行一次写命令就向从服务器发送相同的命令</li>
+</ul>
+<h2 id="主从链"><a href="#主从链" class="headerlink" title="主从链"></a>主从链</h2><p>可以创建中间层</p>
+<h1 id="哨兵"><a href="#哨兵" class="headerlink" title="哨兵"></a>哨兵</h1><p>哨兵监视主从服务器，并且哨兵之间两两监视，当主服务器宕机时，当多个哨兵同时监听到主服务器宕机时会发起一次投票，进行failover操作，切换成功后通过订阅模式把自己监控的从服务器实现切换主机。</p>
+<h1 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h1><ul>
+<li>范围分片：需要维护一张映射范围表，代价高</li>
+<li>哈希分片：通过哈希函数将键转化成数字并对实例数量求模知道存储的实例。</li>
+</ul>
+<p>根据执行的分片位置可以分为三种方式：</p>
+<ul>
+<li>客户端分片：由客户端决定（一致性哈希算法）</li>
+<li>代理分片：将客户端请求发送到代理上，由代理转发到请求正确的节点上</li>
+<li>服务器分片：Redis Cluster</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Decucin
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2022/03/28/Redis/" title="Redis">http://yoursite.com/2022/03/28/Redis/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/Redis/" rel="tag"># Redis</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"># 面试</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/28/Mysql/" rel="prev" title="Mysql">
+      <i class="fa fa-chevron-left"></i> Mysql
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+  
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">1.1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字典"><span class="nav-number">1.1.1.</span> <span class="nav-text">字典</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳跃表"><span class="nav-number">1.2.</span> <span class="nav-text">跳跃表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis使用场景"><span class="nav-number">2.</span> <span class="nav-text">Redis使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计数器"><span class="nav-number">2.1.</span> <span class="nav-text">计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">2.2.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找表"><span class="nav-number">2.3.</span> <span class="nav-text">查找表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息队列"><span class="nav-number">2.4.</span> <span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#会话缓存"><span class="nav-number">2.5.</span> <span class="nav-text">会话缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式锁"><span class="nav-number">2.6.</span> <span class="nav-text">分布式锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">2.7.</span> <span class="nav-text">其它</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis与Memcached"><span class="nav-number">3.</span> <span class="nav-text">Redis与Memcached</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#键的过期时间"><span class="nav-number">4.</span> <span class="nav-text">键的过期时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据淘汰策略"><span class="nav-number">5.</span> <span class="nav-text">数据淘汰策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持久化"><span class="nav-number">6.</span> <span class="nav-text">持久化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务"><span class="nav-number">7.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件"><span class="nav-number">8.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复制"><span class="nav-number">9.</span> <span class="nav-text">复制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#连接过程"><span class="nav-number">9.1.</span> <span class="nav-text">连接过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主从链"><span class="nav-number">9.2.</span> <span class="nav-text">主从链</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#哨兵"><span class="nav-number">10.</span> <span class="nav-text">哨兵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分片"><span class="nav-number">11.</span> <span class="nav-text">分片</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Decucin"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Decucin</p>
+  <div class="site-description" itemprop="description">喜欢简单的事物和明朗的关系</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/decucin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;decucin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1690406856@qq.com" title="E-Mail → mailto:1690406856@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/decucin" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;decucin" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020-05 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Decucin</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">225k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">3:24</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	<span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+	<span class="post-meta-divider">|</span>
+	<span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+	<span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值矫正 -->
+<script>
+$(document).ready(function() {
+
+	var int = setInterval(fixCount, 50);
+	var count0ffset = 20000;
+	
+	function fixCount(){
+		if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+		{
+			$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + count0ffset);
+			clearInterval(int);
+		}
+		if ($("#busuanzi_value_site_pv").css("display") != "none")
+		{
+			$("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) +count0ffset);
+			clearInterval(int);
+		}
+	}
+});
+</script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/love.js"></script>
+</body>
+</html>
